@@ -81,7 +81,6 @@ const main = {
                         {
                             view: "button",
                             id: "form_btn_add",
-                            name: "submit",
                             label: "Add new",
                             css: "webix_primary",
                             on: {
