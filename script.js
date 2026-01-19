@@ -72,10 +72,10 @@ const main = {
             width: 300,
             elements: [
                 { template: "Edit Films", type: "section" },
-                { view: "text", label: "Title", name: "title" },
-                { view: "text", label: "Year", name: "year" },
-                { view: "text", label: "Rating", name: "rating" },
-                { view: "text", label: "Votes", name: "votes" },
+                { view: "text", label: "Title", name: "title", invalidMessage: "Title is required" },
+                { view: "text", label: "Year", name: "year", invalidMessage: "Year value must be from 1970 to the current year" },
+                { view: "text", label: "Rating", name: "rating", invalidMessage: "Rating must be a non-zero number" },
+                { view: "text", label: "Votes", name: "votes", invalidMessage: "Votes must be a number from 0 to 100000" },
                 {
                     cols: [
                         {
@@ -126,11 +126,6 @@ const main = {
                 rating: (value) => webix.rules.isNumber(value) && value != 0,
                 votes: (value) => webix.rules.isNumber(value) && value >= 0 && value <= 100000,
             },
-            on: {
-                onValidationError(id) {
-                    this.elements[id].data.invalidMessage = "Invalid input";
-                }
-            }
         },
     ],
     autoheight: true,
