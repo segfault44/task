@@ -94,7 +94,7 @@ const main = {
                                     webix.message("Validation success");
                                     const table = $$("table");
                                     const data = form.getValues();
-                                    $$("table").add({
+                                    table.add({
                                         title: data.title,
                                         year: data.year,
                                         rating: data.rating,
