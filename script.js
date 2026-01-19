@@ -1,0 +1,104 @@
+const small_film_set = [
+    { id:1, title:"The Shawshank Redemption", year:1994, votes:678790, rating:9.2, rank:1, category:"Thriller"},
+    { id:2, title:"The Godfather", year:1972, votes:511495, rating:9.2, rank:2, category:"Crime"},
+    { id:3, title:"The Godfather: Part II", year:1974, votes:319352, rating:9.0, rank:3, category:"Crime"},
+    { id:4, title:"The Good, the Bad and the Ugly", year:1966, votes:213030, rating:8.9, rank:4, category:"Western"},
+    { id:5, title:"Pulp fiction", year:1994, votes:533848, rating:8.9, rank:5, category:"Crime"},
+    { id:6, title:"12 Angry Men", year:1957, votes:164558, rating:8.9, rank:6, category:"Western"}
+];
+
+const links = [ "Dashboard", "Users", "Products", "Locations" ];
+
+const header = {
+    paddingX: 12,
+    paddingY: 4,
+    cols: [
+        {
+            view: "label",
+            label: "My App",
+            css: "header_label",
+            autowidth: true,
+        },
+        {},
+        {
+            view: "button",
+            label: "Profile",
+            type: "icon",
+            icon: "wxi-user",
+            css: "header_button",
+            autowidth: true,
+        },
+    ],
+    css: "header",
+};
+
+const main = {
+    cols: [
+        {
+            rows: [
+                {
+                    view: "list",
+                    template: (obj) => `<a href="/${obj.value.toLowerCase()}">${obj.value}</a>`,
+                    data: links,
+                    css: "list",
+                    autoheight: true,
+                    borderless: true,
+                    width: 200,
+                },
+                {},
+                {
+                    view: "label",
+                    label: "<span class='webix_icon wxi-check'></span> Connected",
+                    type: "icon",
+                    css: "connection_status",
+                    icon: "wxi-user",
+                },
+            ],
+            css: "navbar"
+        },
+        {
+            view: "resizer"
+        },
+        {
+            view: "datatable",
+            data: small_film_set,
+            autoConfig: true
+        },
+        {
+            view: "form",
+            width: 300,
+            elements: [
+                { template: "Edit Films", type: "section" },
+                { view: "text", label: "Title" },
+                { view: "text", label: "Year" },
+                { view: "text", label: "Rating" },
+                { view: "text", label: "Votes" },
+                {
+                    cols: [
+                        {
+                            view: "button",
+                            label: "Add new",
+                            css: "webix_primary"
+                        },
+                        {
+                            view: "button",
+                            label: "Clear",
+                        }
+                    ]
+                },
+                {}
+            ]
+        },
+    ],
+    autoheight: true,
+};
+
+const footer = {
+    template: "The software is provided by <a href='https://webix.com'>https://webix.com</a>. All rights reserved (c)",
+    css: { "text-align": "center" },
+    height: 30,
+};
+
+webix.ui({
+    rows: [ header, main, footer ],
+});

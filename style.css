@@ -1,0 +1,45 @@
+.header {
+    background: slategray;
+}
+
+.header_label .webix_el_box {
+    font-weight: bold;
+    color: white;
+}
+
+.header_button {
+    & .webix_button {
+        &, &:hover, &:focus {
+            background: transparent;
+            color: white;
+        }
+    }
+
+    & .webix_icon_btn {
+        color: white !important;
+    }
+}
+
+
+.navbar {
+    background: #F4F5F9;
+}
+
+.list {
+    background: transparent;
+
+    & .webix_list_item a {
+        color: inherit;
+        text-decoration: none;
+    }
+}
+
+.connection_status {
+    text-align: center;
+    border-bottom-width: 1px !important;
+
+    & .webix_el_box {
+        color: green;
+        font-weight: normal;
+    }
+}
