@@ -27,6 +27,7 @@ const header = {
             icon: "wxi-user",
             css: "header_button",
             autowidth: true,
+            popup: "user_menu"
         },
     ],
     css: "header",
@@ -98,6 +99,27 @@ const footer = {
     css: { "text-align": "center" },
     height: 30,
 };
+
+webix.ui({
+    view: "popup",
+    id: "user_menu",
+    css: "user_menu_popup",
+    body: {
+        view: "list",
+        template: (obj) => `<a href="${obj.url}">${obj.label}</a>`,
+        autoheight: true,
+        data: [
+            {
+                label: "Settings",
+                url: "/settings",
+            },
+            {
+                label: "Log Out",
+                url: "/logout",
+            }
+        ]
+    }
+});
 
 webix.ui({
     rows: [ header, main, footer ],
