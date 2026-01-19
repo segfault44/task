@@ -1,3 +1,5 @@
+import IDS from "./ids"
+
 const small_film_set = [
     { id:1, title:"The Shawshank Redemption", year:1994, votes:678790, rating:9.2, rank:1, category:"Thriller"},
     { id:2, title:"The Godfather", year:1972, votes:511495, rating:9.2, rank:2, category:"Crime"},
@@ -62,13 +64,13 @@ const main = {
         },
         {
             view: "datatable",
-            id: "table",
+            id: IDS.table,
             data: small_film_set,
             autoConfig: true
         },
         {
             view: "form",
-            id: "form",
+            id: IDS.form,
             width: 300,
             elements: [
                 { template: "Edit Films", type: "section" },
@@ -80,7 +82,6 @@ const main = {
                     cols: [
                         {
                             view: "button",
-                            id: "form_btn_add",
                             label: "Add new",
                             css: "webix_primary",
                             on: {
@@ -137,7 +138,7 @@ const footer = {
 
 webix.ui({
     view: "popup",
-    id: "user_menu",
+    id: IDS.user_menu,
     css: "user_menu_popup",
     body: {
         view: "list",
