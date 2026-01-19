@@ -90,8 +90,8 @@ const main = {
                                     // Validate the form
                                     const validationResult = form.validate();
                                     if (!validationResult) return;
-                                    else webix.message("Validation success");
                                     // Add the data on successfull validation
+                                    webix.message("Validation success");
                                     const table = $$("table");
                                     const data = form.getValues();
                                     $$("table").add({
