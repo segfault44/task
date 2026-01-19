@@ -62,33 +62,75 @@ const main = {
         },
         {
             view: "datatable",
+            id: "table",
             data: small_film_set,
             autoConfig: true
         },
         {
             view: "form",
+            id: "form",
             width: 300,
             elements: [
                 { template: "Edit Films", type: "section" },
-                { view: "text", label: "Title" },
-                { view: "text", label: "Year" },
-                { view: "text", label: "Rating" },
-                { view: "text", label: "Votes" },
+                { view: "text", label: "Title", name: "title" },
+                { view: "text", label: "Year", name: "year" },
+                { view: "text", label: "Rating", name: "rating" },
+                { view: "text", label: "Votes", name: "votes" },
                 {
                     cols: [
                         {
                             view: "button",
+                            id: "form_btn_add",
+                            name: "submit",
                             label: "Add new",
-                            css: "webix_primary"
+                            css: "webix_primary",
+                            on: {
+                                onItemClick(id) {
+                                    const form = this.getFormView()
+                                    // Validate the form
+                                    const validationResult = form.validate();
+                                    if (!validationResult) return;
+                                    else webix.message("Validation success");
+                                    // Add the data on successfull validation
+                                    const table = $$("table");
+                                    const data = form.getValues();
+                                    $$("table").add({
+                                        title: data.title,
+                                        year: data.year,
+                                        rating: data.rating,
+                                        votes: data.votes,
+                                        rank: table.count() + 1
+                                    });
+                                    form.clear();
+                                }
+                            },
                         },
                         {
                             view: "button",
                             label: "Clear",
+                            on: {
+                                onItemClick(_id) {
+                                    const form = this.getFormView();
+                                    form.clear();
+                                    form.clearValidation();
+                                }
+                            },
                         }
                     ]
                 },
                 {}
-            ]
+            ],
+            rules: {
+                title: webix.rules.isNotEmpty,
+                year: (value) => webix.rules.isNumber(value) && value >= 1970 && value <= new Date().getFullYear(),
+                rating: (value) => webix.rules.isNumber(value) && value != 0,
+                votes: (value) => webix.rules.isNumber(value) && value >= 0 && value <= 100000,
+            },
+            on: {
+                onValidationError(id) {
+                    this.elements[id].data.invalidMessage = "Invalid input";
+                }
+            }
         },
     ],
     autoheight: true,
