@@ -128,7 +128,6 @@ const main = {
             },
         },
     ],
-    autoheight: true,
 };
 
 const footer = {
