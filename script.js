@@ -1,4 +1,4 @@
-import IDS from "./ids"
+import IDS from "./ids.js"
 
 const small_film_set = [
     { id:1, title:"The Shawshank Redemption", year:1994, votes:678790, rating:9.2, rank:1, category:"Thriller"},

@@ -1,8 +1,10 @@
 /**
  * View identifiers
  */
-export default IDS = {
+const IDS = {
     table: "table",
     form: "form",
     user_menu: "user_menu",
 };
+
+export default IDS;
