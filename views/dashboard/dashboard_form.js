@@ -1,4 +1,4 @@
-import IDS from "./_ids.js"
+import IDS from "../_ids.js"
 
 /**
  * Submit the form
@@ -15,11 +15,13 @@ function handleSubmit(_id) {
 
     // Add the data on successfull validation
     webix.message("Validation success");
-    const table = $$(IDS.TABLE);
+    const table = $$(IDS.DASHBOARD_TABLE);
     const data = form.getValues();
+    
     table.add({
+        id: table.getLastId() + 1,
+        rank: table.count() + 1,
         ...data,
-        rank: table.count() + 1
     });
     form.clear();
 }
@@ -36,11 +38,10 @@ function handleClear(_id) {
 }
 
 /**
- * @type { webix.ui.form }
+ * @type {webix.ui.form}
  */
-const EditFilmsForm = {
+const DashboardForm = {
     view: "form",
-    id: IDS.FORM,
     width: 300,
     elements: [
         { template: "Edit Films", type: "section" },
@@ -73,4 +74,4 @@ const EditFilmsForm = {
     },
 };
 
-export default EditFilmsForm;
+export default DashboardForm;
