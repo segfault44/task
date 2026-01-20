@@ -54,3 +54,7 @@
 .highlighted {
     background-color: blanchedalmond;
 }
+
+.users_list .webix_list_item:nth-child(-n + 5) {
+    background-color: blanchedalmond;
+}

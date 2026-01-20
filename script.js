@@ -12,11 +12,6 @@ webix.ui({
 
 // Load user data
 webix.ajax().get("/data/users.json").then(async (data) => {
-    const json = data.json();
-    for (let i = 0; i < json.length; i++) {
-        if (i < 5) json[i].$css = 'highlighted';
-    }
-
-    $$(IDS.USERS_LIST).parse(json);
-    $$(IDS.USERS_CHART).parse(json);
+    $$(IDS.USERS_LIST).parse(data);
+    $$(IDS.USERS_CHART).parse(data);
 });
