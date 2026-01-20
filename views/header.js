@@ -1,3 +1,5 @@
+import IDS from "./_ids.js";
+
 /** @type {webix.ui.toolbar} */
 const Header = {
     view: "toolbar",
@@ -19,7 +21,7 @@ const Header = {
             icon: "wxi-user",
             css: "webix_transparent",
             autowidth: true,
-            popup: "user_menu",
+            popup: IDS.USER_MENU_POPUP,
         },
     ],
 };
