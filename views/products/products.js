@@ -10,7 +10,7 @@ const ProductsView = {
         { id: "title", header: "Title", template: "{common.treetable()} #title#", width: 400 },
         { id: "price", header: "Price", width: 100 },
     ],
-    select: true,
+    select: "cell",
     url: "/data/products.json",
     on: {
         onAfterLoad() {
