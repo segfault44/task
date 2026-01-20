@@ -14,6 +14,9 @@ const IDS = {
 
     // Users view identifiers
     VIEW_USERS: "view_users",
+    USERS_TOOLBAR_TEXT: "users_toolbar_text",
+    USERS_CHART: "users_chart",
+    USERS_LIST: "users_list",
 
     // Products view identifiers
     VIEW_PRODUCTS: "view_products",

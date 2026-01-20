@@ -36,3 +36,21 @@
 .cell_hover {
     background: lightblue;
 }
+
+.list_remove_icon {
+    color: #ccc;
+    float: right;
+    margin-top: 8px;
+
+    &:hover {
+        color: #888;
+    }
+    
+    .webix_selected &:hover {
+        color: #fff;
+    }
+}
+
+.highlighted {
+    background-color: blanchedalmond;
+}
