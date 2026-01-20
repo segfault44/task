@@ -58,3 +58,8 @@
 .users_list .webix_list_item:nth-child(-n + 5) {
     background-color: blanchedalmond;
 }
+
+.dashboard_table_id_column .webix_cell {
+    background-color: #F4F5F9;
+    border-right-color: #DADEE0 !important;
+}
