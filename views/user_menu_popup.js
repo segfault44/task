@@ -1,5 +1,6 @@
 import IDS from "./_ids.js";
 
+/** @type { webix.ui.popup } */
 const UserMenuPopup = {
     view: "popup",
     id: IDS.USER_MENU_POPUP,

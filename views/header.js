@@ -1,3 +1,4 @@
+/** @type {webix.ui.toolbar} */
 const Header = {
     view: "toolbar",
     css: "webix_dark",

@@ -1,5 +1,43 @@
 import IDS from "./_ids.js"
 
+/**
+ * Submit the form
+ * @this {webix.ui.button}
+ * @param {string} _id
+ */
+function handleSubmit(_id) {
+    /** @type { webix.ui.form } */
+    const form = this.getFormView();
+
+    // Validate the form
+    const validationResult = form.validate();
+    if (!validationResult) return;
+
+    // Add the data on successfull validation
+    webix.message("Validation success");
+    const table = $$(IDS.TABLE);
+    const data = form.getValues();
+    table.add({
+        ...data,
+        rank: table.count() + 1
+    });
+    form.clear();
+}
+
+/**
+ * Clear the form
+ * @this {webix.ui.button}
+ * @param {string} _id
+ */
+function handleClear(_id) {
+    const form = this.getFormView();
+    form.clear();
+    form.clearValidation();
+}
+
+/**
+ * @type { webix.ui.form }
+ */
 const EditFilmsForm = {
     view: "form",
     id: IDS.FORM,
@@ -16,37 +54,12 @@ const EditFilmsForm = {
                     view: "button",
                     label: "Add new",
                     css: "webix_primary",
-                    on: {
-                        onItemClick(_id) {
-                            const form = this.getFormView()
-                            // Validate the form
-                            const validationResult = form.validate();
-                            if (!validationResult) return;
-                            // Add the data on successfull validation
-                            webix.message("Validation success");
-                            const table = $$(IDS.TABLE);
-                            const data = form.getValues();
-                            table.add({
-                                title: data.title,
-                                year: data.year,
-                                rating: data.rating,
-                                votes: data.votes,
-                                rank: table.count() + 1
-                            });
-                            form.clear();
-                        },
-                    },
+                    click: handleSubmit,
                 },
                 {
                     view: "button",
                     label: "Clear",
-                    on: {
-                        onItemClick(_id) {
-                            const form = this.getFormView();
-                            form.clear();
-                            form.clearValidation();
-                        },
-                    },
+                    click: handleClear,
                 }
             ],
         },
