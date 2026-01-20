@@ -12,6 +12,8 @@ const small_film_set = [
 const links = [ "Dashboard", "Users", "Products", "Locations" ];
 
 const header = {
+    view: "toolbar",
+    css: "webix_dark",
     paddingX: 12,
     paddingY: 4,
     cols: [
@@ -27,12 +29,11 @@ const header = {
             label: "Profile",
             type: "icon",
             icon: "wxi-user",
-            css: "header_button",
+            css: "webix_transparent",
             autowidth: true,
             popup: "user_menu"
         },
     ],
-    css: "header",
 };
 
 const main = {
