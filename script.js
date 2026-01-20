@@ -12,6 +12,6 @@ webix.ui({
 
 // Load user data
 webix.ajax().get("/data/users.json").then(async (data) => {
-    $$(IDS.USERS_LIST).parse(data);
-    $$(IDS.USERS_CHART).parse(data);
+    $$(IDS.USERS_LIST).parse(webix.copy(data));
+    $$(IDS.USERS_CHART).parse(webix.copy(data));
 });
