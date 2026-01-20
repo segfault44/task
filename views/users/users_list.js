@@ -15,6 +15,7 @@ const UsersList = {
             /** @type {webix.ui.chart} */
             const chart = $$(IDS.USERS_CHART);
             if (chart && chart.exists(id)) chart.remove(id);
+            return false;
         }
     },
 };
