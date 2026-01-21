@@ -37,4 +37,11 @@ $$(IDS.DASHBOARD_TABLE).registerFilter(
 )
 
 // Sync the user list with the user chart
-$$(IDS.USERS_CHART).sync(IDS.USERS_LIST);
+$$(IDS.USERS_CHART).sync($$(IDS.USERS_LIST), function () {
+    this.group({
+        by: "country",
+        map: {
+            count: ["country", "count"]
+        }
+    })
+});
