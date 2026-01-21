@@ -20,6 +20,9 @@ const UsersList = {
             }
         }
     },
+    rules: {
+        name: webix.rules.isNotEmpty,
+    },
     onClick: {
         /** @this {webix.ui.list} */
         list_remove_icon(_ev, id) {
