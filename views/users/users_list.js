@@ -2,10 +2,13 @@ import IDS from "../_ids.js";
 
 /** @type {webix.ui.list} */
 const UsersList = {
-    view: "list",
+    view: "editlist",
     template: `#name# <span class="webix_icon mdi mdi-close list_remove_icon"></span>`,
     id: IDS.USERS_LIST,
     css: "users_list",
+    editable: true,
+    editor: "text",
+    editValue: "name",
     scheme: {
         $init(it) {
             if (it.age < 26) {

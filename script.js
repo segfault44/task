@@ -5,6 +5,9 @@ import UserMenuPopup from "./views/user_menu_popup.js";
 import IDS from "./views/_ids.js";
 import { YEAR_FILTERS } from "./views/dashboard/dashboard_tabbar.js";
 
+// Initialize custom views
+webix.protoUI({ name: "editlist" }, webix.EditAbility, webix.ui.list);
+
 // Initialize windows and popups
 webix.ui(UserMenuPopup);
 
