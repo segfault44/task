@@ -13,12 +13,7 @@ const UsersList = {
         name: "John Doe",
         age: 20,
         country: "USA",
-
-        $init(it) {
-            if (it.age < 26) {
-                it.$css = "user_highlighted";
-            }
-        }
+        $init: (it) => it.$css = it.age < 26 ? "user_highlighted" : null,
     },
     rules: {
         name: webix.rules.isNotEmpty,

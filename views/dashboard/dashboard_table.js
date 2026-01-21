@@ -21,16 +21,9 @@ const DashboardTable = {
         }
     },
     scheme: {
-        /**
-         * @this {webix.ui.datatable}
-         * @param {object} obj
-         */
-        $init(obj) {
-            // Generate a random integer in range [1, 4]
-            const cat = Math.floor(Math.random() * 4.0) + 1.0;
-            // Assign it as a category id
-            obj["category_id"] = cat;
-        }
+        // Generate a category id in range [1, 4]
+        $init: (obj) => obj["category_id"] = Math.floor(Math.random() * 4.0) + 1.0,
+        
     },
     url: "/data/data.json",
 };
