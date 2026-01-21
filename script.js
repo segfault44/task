@@ -42,3 +42,6 @@ $$(IDS.DASHBOARD_TABLE).registerFilter(
         setValue: (node, value) => node.setValue(value),
     }
 )
+
+// Sync the user list with the user chart
+$$(IDS.USERS_CHART).sync(IDS.USERS_LIST);

@@ -24,13 +24,10 @@ function getMaxId(webixList) {
 
 /** @this {webix.ui.text} */
 function handleInput() {
-    /** @type {webix.ui.chart} */
-    const chart = $$(IDS.USERS_CHART);
     /** @type {webix.ui.list} */
     const list = $$(IDS.USERS_LIST);
-    if (!chart || !list) return;
+    if (!list) return;
     const value = this.getValue();
-    chart.filter("#name#", value);
     list.filter("#name", value);
 }
 
@@ -64,16 +61,7 @@ function handleClickNew() {
     // Add the user to the list and re-sort the list
     list.add(user);
     if (currentSortOrder !== "none") {
-        list.sort("#name#", currentSortOrder);
-    }
-
-    // Add the user to the chart and re-sort the chart
-    /** @type {webix.ui.chart} */
-    const chart = $$(IDS.USERS_CHART);
-    if (!chart) return;
-    chart.add(user);
-    if (currentSortOrder !== "none") {
-        chart.sort("#age#", currentSortOrder);
+        list.sort("#age#", currentSortOrder);
     }
 }
 
@@ -90,16 +78,12 @@ let currentSortOrder = "none";
  * @param {"asc" | "desc"} order 
  */
 function handleSort(order) {
-    /** @type {webix.ui.chart} */
-    const chart = $$(IDS.USERS_CHART);
     /** @type {webix.ui.list} */
     const list = $$(IDS.USERS_LIST);
-    if (!chart || !list) return;
-    chart.sort("#age#", order);
-    list.sort("#name#", order);
+    if (!list) return;
+    list.sort("#age#", order);
     currentSortOrder = order;
 }
-
 
 /** @type {webix.ui.toolbar} */
 const UsersToolbar = {

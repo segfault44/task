@@ -23,12 +23,7 @@ const UsersList = {
     onClick: {
         /** @this {webix.ui.list} */
         list_remove_icon(_ev, id) {
-            // Remove from the list
             this.remove(id);
-            // Remove from the chart
-            /** @type {webix.ui.chart} */
-            const chart = $$(IDS.USERS_CHART);
-            if (chart && chart.exists(id)) chart.remove(id);
             return false;
         }
     },
