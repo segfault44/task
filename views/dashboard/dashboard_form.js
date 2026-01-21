@@ -6,23 +6,23 @@ import IDS from "../_ids.js"
  * @param {string} _id
  */
 function handleSubmit(_id) {
-    /** @type { webix.ui.form } */
+    // Get the form and the table
+    /** @type {webix.ui.form} */
     const form = this.getFormView();
-
-    // Validate the form
-    const validationResult = form.validate();
-    if (!validationResult) return;
-
-    // Add the data on successfull validation
-    webix.message("Validation success");
+    /** @type {webix.ui.datatable} */
     const table = $$(IDS.DASHBOARD_TABLE);
-    const data = form.getValues();
-    
-    table.add({
-        id: table.getLastId() + 1,
-        rank: table.count() + 1,
-        ...data,
-    });
+    if (!form || !table) throw new Error();
+
+    // Validate form input
+    if (!form.validate()) return;
+    webix.message("Validation success");
+
+    // Set next id
+    const values = form.getValues();
+    values.id = table.getLastId() + 1;
+
+    // Save and clear the form
+    form.save(values);
     form.clear();
 }
 
@@ -42,6 +42,7 @@ function handleClear(_id) {
  */
 const DashboardForm = {
     view: "form",
+    id: IDS.DASHBOARD_FORM,
     width: 300,
     elements: [
         { template: "Edit Films", type: "section" },

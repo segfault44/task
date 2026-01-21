@@ -10,6 +10,7 @@ const IDS = {
 
     // Dashboard view identifiers
     VIEW_DASHBOARD: "view_dashboard",
+    DASHBOARD_FORM: "dashboard_form",
     DASHBOARD_TABLE: "dashboard_table",
 
     // Users view identifiers
