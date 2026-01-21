@@ -1,5 +1,15 @@
 import IDS from "../_ids.js";
 
+/**
+ * Get a random list element utility
+ * @template T
+ * @param {Array<T>} list 
+ * @return {T}
+ */
+function getRandomElement(list) {
+    return list[Math.floor(Math.random() * list.length)];
+}
+
 /** @this {webix.ui.text} */
 function handleInput() {
     /** @type {webix.ui.chart} */
@@ -10,6 +20,36 @@ function handleInput() {
     const value = this.getValue();
     chart.filter("#name#", value);
     list.filter("#name", value);
+}
+
+/**
+ * Create a new user with random data
+ * @this {webix.ui.toolbar}
+ */
+function handleClickNew() {
+    const list = $$(IDS.USERS_LIST);
+    if (!list) throw new Error("User list not found");
+
+    // Random generator data sets
+    const FIRST_NAMES = [ "James", "Michael", "John", "Mary", "Patricia", "Jennifer" ];
+    const LAST_NAMES = [ "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia" ];
+    const COUNTRIES = [ "USA", "Russia", "China", "Germany", "Italy", "Spain" ];
+
+    // Generate a new user data
+    const id = list.getLastId() + 1;
+    const firstName = getRandomElement(FIRST_NAMES);
+    const lastName = getRandomElement(LAST_NAMES);
+    const name = `${firstName} ${lastName}`;
+    const age = Math.floor(Math.random() * 20) + 20;
+    const country = getRandomElement(COUNTRIES);
+
+    // Finalize a user
+    const user = {
+        id, name, age, country,
+    };
+
+    // Append a user to a list
+    list.add(user);
 }
 
 /**
@@ -50,6 +90,13 @@ const UsersToolbar = {
             css: "webix_primary",
             width: 100,
             click: () => handleSort("desc"),
+        },
+        {
+            view: "button",
+            label: "Add new",
+            css: "webix_primary",
+            width: 100,
+            click: handleClickNew,
         },
     ]
 };
