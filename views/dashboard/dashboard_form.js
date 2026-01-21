@@ -33,6 +33,11 @@ function handleSubmit(_id) {
  */
 function handleClear(_id) {
     const form = this.getFormView();
+    /** @type {webix.ui.datatable} */
+    const table = $$(IDS.DASHBOARD_TABLE);
+    if (!form || !table) return;
+    
+    table.unselect();
     form.clear();
     form.clearValidation();
 }
