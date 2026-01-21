@@ -16,10 +16,7 @@ function handleSubmit(_id) {
     // Validate form input
     if (!form.validate()) return;
     webix.message("Validation success");
-
-    // Set next id
     const values = form.getValues();
-    values.id = table.getLastId() + 1;
 
     // Save and clear the form
     form.save(values);
