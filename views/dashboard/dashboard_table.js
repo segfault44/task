@@ -14,17 +14,27 @@ const DashboardTable = {
         { id: "year", header: ["Year"], sort: "text", width: 80 },
         { template: `<span class="remove_btn webix_icon wxi-trash"></span>`, width: 40 },
     ],
+    scheme: {
+        
+        $init(obj) {
+            // Preprocess the sample data numbers to remove separators
+            obj.votes = obj.votes.replaceAll(",", "");
+            obj.rating = obj.rating.replaceAll(",", "");
+            // Generate a category id in range [1, 4]
+            obj.category_id = Math.floor(Math.random() * 4.0) + 1.0;
+        },
+    },
     onClick: {
         /** @this {webix.ui.datatable} */
         remove_btn(_ev, id) {
             this.remove(id);
             return false;
-        }
+        },
     },
-    scheme: {
-        // Generate a category id in range [1, 4]
-        $init: (obj) => obj["category_id"] = Math.floor(Math.random() * 4.0) + 1.0,
-        
+    on: {
+        onAfterSelect() {
+            $$(IDS.DASHBOARD_FORM).clearValidation();
+        }
     },
     url: "/data/data.json",
 };
