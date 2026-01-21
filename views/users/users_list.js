@@ -25,6 +25,7 @@ const UsersList = {
             return false;
         }
     },
+    url: "/data/users.json",
 };
 
 export default UsersList;
