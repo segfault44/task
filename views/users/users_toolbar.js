@@ -6,13 +6,13 @@ const LAST_NAMES = [ "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia" 
 const COUNTRIES = [ "USA", "Russia", "China", "Germany", "Italy", "Spain" ];
 
 /**
- * Get a random list element utility
+ * Return a random element from an array
  * @template T
  * @param {Array<T>} list 
  * @return {T}
  */
-function getRandomElement(list) {
-    return list[Math.floor(Math.random() * list.length)];
+function getRandomElement(array) {
+    return array[Math.floor(Math.random() * array.length)];
 }
 
 /** @this {webix.ui.text} */
