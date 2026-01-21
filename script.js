@@ -36,6 +36,8 @@ $$(IDS.DASHBOARD_TABLE).registerFilter(
     }
 )
 
+$$(IDS.DASHBOARD_TABBAR).attachEvent("onChange", (_id) => $$(IDS.DASHBOARD_TABLE).filterByAll());
+
 // Sync the user list with the user chart
 $$(IDS.USERS_CHART).sync($$(IDS.USERS_LIST), function () {
     this.group({

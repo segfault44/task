@@ -36,9 +36,6 @@ const DashboardTabbar = {
     view: "tabbar",
     id: IDS.DASHBOARD_TABBAR,
     options: Object.entries(YEAR_FILTERS).map(([id, { name: value }]) => ({ id, value })),
-    on: {
-        onChange: (_id) => $$(IDS.DASHBOARD_TABLE).filterByAll(),
-    },
 };
 
 export default DashboardTabbar;
