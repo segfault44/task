@@ -31,8 +31,8 @@ $$(IDS.DASHBOARD_TABLE).registerFilter(
         }
     },
     {
-        getValue: node => node.getValue(),
-        setValue: (node, value) => node.setValue(value),
+        getValue: view => view.getValue(),
+        setValue: (view, value) => view.setValue(value),
     }
 )
 
