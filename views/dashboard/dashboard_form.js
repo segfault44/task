@@ -12,18 +12,23 @@ function handleSubmit(_id) {
     /** @type {webix.ui.datatable} */
     const table = $$(IDS.DASHBOARD_TABLE);
     if (!form || !table) throw new Error();
-
+    
     // Validate form input
     if (!form.validate()) return;
     webix.message("Validation success");
     const values = form.getValues();
+    const isEdit = "id" in values;
+
+    // Calculate new rank
+    const pull = table.data.pull;
+    if (!isEdit) values.rank = Object.keys(pull).length + 1;
 
     // Save and clear the form
     form.save(values);
     form.clear();
 
     // If editing, unselect rows
-    if (!("id" in values)) table.unselectAll();
+    if (isEdit) table.unselectAll();
 }
 
 /**
@@ -36,7 +41,7 @@ function handleClear(_id) {
     /** @type {webix.ui.datatable} */
     const table = $$(IDS.DASHBOARD_TABLE);
     if (!form || !table) return;
-    
+
     table.unselect();
     form.clear();
     form.clearValidation();

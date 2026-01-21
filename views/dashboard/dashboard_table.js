@@ -7,7 +7,7 @@ const DashboardTable = {
     hover: "cell_hover",
     select: true,
     columns: [
-        { id: "id", header: "", sort: "int", css: "dashboard_table_id_column", width: 50 },
+        { id: "rank", header: "", sort: "int", css: "dashboard_table_id_column", width: 50 },
         { id: "title", header: ["Film Title", { content: "textFilter" }], sort: "text", fillspace: true },
         { id: "category_id", header: ["Category", { content: "selectFilter" }], sort: "text", collection: "/data/categories.json" },
         { id: "votes", header: ["Votes", { content: "textFilter" }], sort: "text", width: 100 },
