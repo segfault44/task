@@ -61,9 +61,29 @@ function handleClickNew() {
         id, name, age, country,
     };
 
-    // Append a user to a list
+    // Add the user to the list and re-sort the list
     list.add(user);
+    if (currentSortOrder !== "none") {
+        list.sort("#name#", currentSortOrder);
+    }
+
+    // Add the user to the chart and re-sort the chart
+    /** @type {webix.ui.chart} */
+    const chart = $$(IDS.USERS_CHART);
+    if (!chart) return;
+    chart.add(user);
+    if (currentSortOrder !== "none") {
+        chart.sort("#age#", currentSortOrder);
+    }
 }
+
+/**
+ * Current user list sort order
+ * Updated in `handleSort`
+ * Used in `handleClickNew` to re-sort users
+ * @type {"none" | "asc" | "desc"}
+ */
+let currentSortOrder = "none";
 
 /**
  * Sort the list and the chart
@@ -77,7 +97,9 @@ function handleSort(order) {
     if (!chart || !list) return;
     chart.sort("#age#", order);
     list.sort("#name#", order);
+    currentSortOrder = order;
 }
+
 
 /** @type {webix.ui.toolbar} */
 const UsersToolbar = {
