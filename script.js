@@ -3,6 +3,7 @@ import Main from "./views/main.js"
 import Footer from "./views/footer.js"
 import UserMenuPopup from "./views/user_menu_popup.js";
 import IDS from "./views/_ids.js";
+import { YEAR_FILTERS } from "./views/dashboard/dashboard_tabbar.js";
 
 webix.ui(UserMenuPopup);
 
@@ -18,3 +19,20 @@ webix.ajax().get("/data/users.json").then(async (data) => {
 
 // Bind the dashboard form to the datatable
 $$(IDS.DASHBOARD_FORM).bind(IDS.DASHBOARD_TABLE);
+
+$$(IDS.DASHBOARD_TABLE).registerFilter(
+    $$(IDS.DASHBOARD_TABBAR),
+    {
+        columnId: "year",
+        compare(value, filter, _item) {
+            const year = Number(value);
+            if (Number.isNaN(year)) return false;
+            const filterFn = YEAR_FILTERS[filter];
+            return filterFn(year);
+        }
+    },
+    {
+        getValue: node => node.getValue(),
+        setValue: (node, value) => node.setValue(value),
+    }
+)
