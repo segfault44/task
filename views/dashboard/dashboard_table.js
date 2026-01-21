@@ -18,8 +18,8 @@ const DashboardTable = {
         
         $init(obj) {
             // Preprocess the sample data numbers to remove separators
-            obj.votes = obj.votes.replaceAll(",", "");
-            obj.rating = obj.rating.replaceAll(",", "");
+            obj.votes = Number(obj.votes.replaceAll(",", ""));
+            obj.rating = Number(obj.rating.replaceAll(",", ""));
             // Generate a category id in range [1, 4]
             obj.category_id = Math.floor(Math.random() * 4.0) + 1.0;
         },
