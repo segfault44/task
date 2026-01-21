@@ -3,7 +3,7 @@ import IDS from "../_ids.js";
 /** @type {webix.ui.list} */
 const UsersList = {
     view: "editlist",
-    template: `#name# <span class="webix_icon mdi mdi-close list_remove_icon"></span>`,
+    template: `#name#, #age#, from #country# <span class="webix_icon mdi mdi-close list_remove_icon"></span>`,
     id: IDS.USERS_LIST,
     css: "users_list",
     editable: true,
