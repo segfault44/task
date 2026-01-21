@@ -10,6 +10,10 @@ const UsersList = {
     editor: "text",
     editValue: "name",
     scheme: {
+        name: "John Doe",
+        age: 20,
+        country: "USA",
+
         $init(it) {
             if (it.age < 26) {
                 it.$css = "user_highlighted";
