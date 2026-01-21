@@ -1,5 +1,10 @@
 import IDS from "../_ids.js";
 
+// Random user generator data sets
+const FIRST_NAMES = [ "James", "Michael", "John", "Mary", "Patricia", "Jennifer" ];
+const LAST_NAMES = [ "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia" ];
+const COUNTRIES = [ "USA", "Russia", "China", "Germany", "Italy", "Spain" ];
+
 /**
  * Get a random list element utility
  * @template T
@@ -27,11 +32,6 @@ function handleClickNew() {
     /** @type {webix.ui.list} */
     const list = $$(IDS.USERS_LIST);
     if (!list) throw new Error("User list not found");
-
-    // Random generator data sets
-    const FIRST_NAMES = [ "James", "Michael", "John", "Mary", "Patricia", "Jennifer" ];
-    const LAST_NAMES = [ "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia" ];
-    const COUNTRIES = [ "USA", "Russia", "China", "Germany", "Italy", "Spain" ];
 
     // Generate a new user data
     const firstName = getRandomElement(FIRST_NAMES);
