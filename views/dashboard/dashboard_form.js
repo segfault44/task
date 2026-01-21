@@ -25,10 +25,11 @@ function handleSubmit(_id) {
 
     // Save and clear the form
     form.save(values);
-    form.clear();
 
     // If editing, unselect rows
     if (isEdit) table.unselectAll();
+    // If not, clear the form
+    else form.clear();
 }
 
 /**
