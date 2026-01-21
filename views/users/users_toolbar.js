@@ -10,6 +10,18 @@ function getRandomElement(list) {
     return list[Math.floor(Math.random() * list.length)];
 }
 
+/**
+ * Get max element id in a Webix list
+ * @param {webix.ui.list} webixList 
+ */
+function getMaxId(webixList) {
+    let maxId = 0;
+    webixList.data.each((it) => {
+        if (it.id > maxId) maxId = it.id;
+    });
+    return maxId;
+}
+
 /** @this {webix.ui.text} */
 function handleInput() {
     /** @type {webix.ui.chart} */
@@ -27,6 +39,7 @@ function handleInput() {
  * @this {webix.ui.toolbar}
  */
 function handleClickNew() {
+    /** @type {webix.ui.list} */
     const list = $$(IDS.USERS_LIST);
     if (!list) throw new Error("User list not found");
 
@@ -36,12 +49,12 @@ function handleClickNew() {
     const COUNTRIES = [ "USA", "Russia", "China", "Germany", "Italy", "Spain" ];
 
     // Generate a new user data
-    const id = list.getLastId() + 1;
+    const id = getMaxId(list) + 1;
     const firstName = getRandomElement(FIRST_NAMES);
     const lastName = getRandomElement(LAST_NAMES);
     const name = `${firstName} ${lastName}`;
     const age = Math.floor(Math.random() * 20) + 20;
-    const country = getRandomElement(COUNTRIES);
+    const country = getRandomElement(COUNTRIES);    
 
     // Finalize a user
     const user = {
