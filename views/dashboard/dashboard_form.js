@@ -11,7 +11,7 @@ function handleSubmit(_id) {
     const form = this.getFormView();
     /** @type {webix.ui.datatable} */
     const table = $$(IDS.DASHBOARD_TABLE);
-    if (!form || !table) throw new Error();
+    if (!form || !table) throw new Error("Form or table not found");
     
     // Validate form input
     if (!form.validate()) return;
