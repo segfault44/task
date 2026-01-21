@@ -51,6 +51,10 @@
     }
 }
 
+.user_highlighted {
+    background: #FEFFD4;
+}
+
 .webix_column.dashboard_table_id_column > div.webix_cell {
     background-color: #F4F5F9;
     border-right-color: #DADEE0;
