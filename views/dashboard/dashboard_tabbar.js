@@ -1,16 +1,33 @@
 import IDS from "../_ids.js";
 
 /**
- * Map of filter functions
- * Key: filter id
- * Value: callback
- * @type {Record<number, (year: number) => boolean>}
+ * @typedef {{
+ *  name: string,
+ *  callback: (year: number) => boolean,
+ * }} YearFilter
+ */
+
+/**
+ * Filters
+ * @type {Record<number, YearFilter>}
  */
 export const YEAR_FILTERS = {
-    1: (_year) => true, // "All"
-    2: (year) => year < 1990, // "Old"
-    3: (year) => year >= 1990 && year < 2010, // "Modern"
-    4: (year) => year >= 2010, // "New"
+    1: {
+        name: "All",
+        callback: (_year) => true,
+    },
+    2: {
+        name: "Old",
+        callback: (year) => year < 1990,
+    },
+    3: {
+        name: "Modern",
+        callback: (year) => year >= 1990 && year < 2010,
+    },
+    4: {
+        name: "New",
+        callback: (year) => year > 2010,
+    },
 };
 
 
@@ -18,17 +35,10 @@ export const YEAR_FILTERS = {
 const DashboardTabbar = {
     view: "tabbar",
     id: IDS.DASHBOARD_TABBAR,
-    options: [
-        { id: 1, value: "All" },
-        { id: 2, value: "Old" },
-        { id: 3, value: "Modern" },
-        { id: 4, value: "New" },
-    ],
+    options: Object.entries(YEAR_FILTERS).map(([id, { name: value }]) => ({ id, value })),
     on: {
-        onChange(_id) {
-            $$(IDS.DASHBOARD_TABLE).filterByAll();
-        }
-    }
+        onChange: (_id) => $$(IDS.DASHBOARD_TABLE).filterByAll(),
+    },
 };
 
 export default DashboardTabbar;

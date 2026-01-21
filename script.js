@@ -33,8 +33,7 @@ $$(IDS.DASHBOARD_TABLE).registerFilter(
         compare(value, filter, _item) {
             const year = Number(value);
             if (Number.isNaN(year)) return false;
-            const filterFn = YEAR_FILTERS[filter];
-            return filterFn(year);
+            return YEAR_FILTERS[filter].callback(year);
         }
     },
     {
