@@ -10,18 +10,6 @@ function getRandomElement(list) {
     return list[Math.floor(Math.random() * list.length)];
 }
 
-/**
- * Get max element id in a Webix list
- * @param {webix.ui.list} webixList 
- */
-function getMaxId(webixList) {
-    let maxId = 0;
-    webixList.data.each((it) => {
-        if (it.id > maxId) maxId = it.id;
-    });
-    return maxId;
-}
-
 /** @this {webix.ui.text} */
 function handleInput() {
     /** @type {webix.ui.list} */
@@ -46,7 +34,6 @@ function handleClickNew() {
     const COUNTRIES = [ "USA", "Russia", "China", "Germany", "Italy", "Spain" ];
 
     // Generate a new user data
-    const id = getMaxId(list) + 1;
     const firstName = getRandomElement(FIRST_NAMES);
     const lastName = getRandomElement(LAST_NAMES);
     const name = `${firstName} ${lastName}`;
@@ -55,7 +42,7 @@ function handleClickNew() {
 
     // Finalize a user
     const user = {
-        id, name, age, country,
+        name, age, country,
     };
 
     // Add the user to the list and re-sort the list
