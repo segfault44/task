@@ -5,8 +5,10 @@ import UserMenuPopup from "./views/user_menu_popup.js";
 import IDS from "./views/_ids.js";
 import { YEAR_FILTERS } from "./views/dashboard/dashboard_tabbar.js";
 
+// Initialize windows and popups
 webix.ui(UserMenuPopup);
 
+// Initialize app
 webix.ui({
     rows: [ Header, Main, Footer ],
 });
@@ -20,6 +22,7 @@ webix.ajax().get("/data/users.json").then(async (data) => {
 // Bind the dashboard form to the datatable
 $$(IDS.DASHBOARD_FORM).bind(IDS.DASHBOARD_TABLE);
 
+// Register dashboard table filters
 $$(IDS.DASHBOARD_TABLE).registerFilter(
     $$(IDS.DASHBOARD_TABBAR),
     {
