@@ -64,7 +64,7 @@ const DashboardForm = {
             cols: [
                 {
                     view: "button",
-                    label: "Add new",
+                    label: "Save",
                     css: "webix_primary",
                     click: handleSubmit,
                 },
