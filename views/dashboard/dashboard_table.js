@@ -34,6 +34,9 @@ const DashboardTable = {
     on: {
         onAfterSelect() {
             $$(IDS.DASHBOARD_FORM).clearValidation();
+        },
+        onAfterAdd(id) {
+            this.show(id);
         }
     },
     url: "/data/data.json",
