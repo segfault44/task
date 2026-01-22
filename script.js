@@ -40,10 +40,16 @@ $$(IDS.DASHBOARD_TABBAR).attachEvent("onChange", (_id) => $$(IDS.DASHBOARD_TABLE
 
 // Sync the user list with the user chart
 $$(IDS.USERS_CHART).sync($$(IDS.USERS_LIST), function () {
+    // Group the chart by country
     this.group({
         by: "country",
         map: {
-            count: ["country", "count"]
-        }
-    })
+            count: ["country", "count"],
+        },
+    });
+
+    // Sort the chart by count, and then by country name
+    this.sort((a, b) => (
+        a.count == b.count ? a.country < b.country : a.count < b.count
+    ));
 });
