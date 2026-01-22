@@ -36,7 +36,7 @@ const DashboardTable = {
             $$(IDS.DASHBOARD_FORM).clearValidation();
         },
         onAfterAdd(id) {
-            this.show(id);
+            this.showItem(id);
         }
     },
     url: "/data/data.json",
