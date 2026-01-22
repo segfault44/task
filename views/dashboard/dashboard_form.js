@@ -43,7 +43,7 @@ function handleClear(_id) {
     const table = $$(IDS.DASHBOARD_TABLE);
     if (!form || !table) return;
 
-    table.unselect();
+    table.unselectAll();
     form.clear();
     form.clearValidation();
 }
