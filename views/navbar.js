@@ -17,6 +17,10 @@ const LINKS = [
         id: IDS.VIEW_PRODUCTS,
         label: "Products",
     },
+    {
+        id: IDS.VIEW_ADMIN,
+        label: "Admin",
+    },
 ];
 
 /** @type {webix.ui.list} */

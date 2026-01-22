@@ -22,6 +22,11 @@ const IDS = {
 
     // Products view identifiers
     VIEW_PRODUCTS: "view_products",
+
+    // Admin view identifiers
+    VIEW_ADMIN: "view_admin",
+    ADMIN_FORM: "admin_form",
+    ADMIN_TABLE: "admin_table",
 };
 
 export default IDS;

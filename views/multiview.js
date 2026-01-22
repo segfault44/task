@@ -1,3 +1,4 @@
+import AdminView from "./admin/admin.js";
 import Dashboard from "./dashboard/dashboard.js";
 import ProductsView from "./products/products.js";
 import UsersView from "./users/users.js";
@@ -9,6 +10,7 @@ const Multiview = {
         Dashboard,
         UsersView,
         ProductsView,
+        AdminView,
     ],
 };
 
