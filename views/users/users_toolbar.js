@@ -1,4 +1,5 @@
 import IDS from "../_ids.js";
+import usersCollection from "./users_collection.js";
 
 // Random user generator data sets
 const FIRST_NAMES = [ "James", "Michael", "John", "Mary", "Patricia", "Jennifer" ];
@@ -46,7 +47,7 @@ function handleClickNew() {
     };
 
     // Add the user to the list and re-sort the list
-    list.add(user);
+    usersCollection.add(user);
     if (currentSortOrder !== "none") {
         list.sort("#age#", currentSortOrder);
     }

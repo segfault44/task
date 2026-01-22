@@ -1,4 +1,5 @@
 import IDS from "../_ids.js";
+import usersCollection from "./users_collection.js";
 
 /** @type {webix.ui.list} */
 const UsersList = {
@@ -13,7 +14,6 @@ const UsersList = {
         name: "John Doe",
         age: 20,
         country: "USA",
-        $init: (it) => it.$css = it.age < 26 ? "user_highlighted" : null,
     },
     rules: {
         name: webix.rules.isNotEmpty,
@@ -21,11 +21,10 @@ const UsersList = {
     onClick: {
         /** @this {webix.ui.list} */
         list_remove_icon(_ev, id) {
-            this.remove(id);
+            usersCollection.remove(id);
             return false;
         }
     },
-    url: "/data/users.json",
 };
 
 export default UsersList;
