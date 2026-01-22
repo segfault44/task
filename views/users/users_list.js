@@ -1,5 +1,6 @@
 import IDS from "../_ids.js";
 import usersCollection from "./users_collection.js";
+import { currentSortOrder } from "./users_toolbar.js";
 
 /** @type {webix.ui.list} */
 const UsersList = {
@@ -22,6 +23,9 @@ const UsersList = {
         /** @this {webix.ui.list} */
         list_remove_icon(_ev, id) {
             usersCollection.remove(id);
+            if (currentSortOrder !== "none") {
+                this.sort("#age#", currentSortOrder);
+            }
             return false;
         }
     },

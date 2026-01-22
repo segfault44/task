@@ -59,7 +59,7 @@ function handleClickNew() {
  * Used in `handleClickNew` to re-sort users
  * @type {"none" | "asc" | "desc"}
  */
-let currentSortOrder = "none";
+export let currentSortOrder = "none";
 
 /**
  * Sort the list and the chart
