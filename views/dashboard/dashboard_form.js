@@ -6,24 +6,30 @@ import IDS from "../_ids.js"
  * @param {string} _id
  */
 function handleSubmit(_id) {
-    /** @type { webix.ui.form } */
+    // Get the form and the table
+    /** @type {webix.ui.form} */
     const form = this.getFormView();
-
-    // Validate the form
-    const validationResult = form.validate();
-    if (!validationResult) return;
-
-    // Add the data on successfull validation
-    webix.message("Validation success");
+    /** @type {webix.ui.datatable} */
     const table = $$(IDS.DASHBOARD_TABLE);
-    const data = form.getValues();
+    if (!form || !table) throw new Error("Form or table not found");
     
-    table.add({
-        id: table.getLastId() + 1,
-        rank: table.count() + 1,
-        ...data,
-    });
-    form.clear();
+    // Validate form input
+    if (!form.validate()) return;
+    webix.message("Validation success");
+    const values = form.getValues();
+    const isEdit = "id" in values;
+
+    // Calculate new rank
+    const pull = table.data.pull;
+    if (!isEdit) values.rank = Object.keys(pull).length + 1;
+
+    // Save and clear the form
+    form.save(values);
+
+    // If editing, unselect rows
+    if (isEdit) table.unselectAll();
+    // If not, clear the form
+    else form.clear();
 }
 
 /**
@@ -33,6 +39,11 @@ function handleSubmit(_id) {
  */
 function handleClear(_id) {
     const form = this.getFormView();
+    /** @type {webix.ui.datatable} */
+    const table = $$(IDS.DASHBOARD_TABLE);
+    if (!form || !table) return;
+
+    table.unselectAll();
     form.clear();
     form.clearValidation();
 }
@@ -42,6 +53,7 @@ function handleClear(_id) {
  */
 const DashboardForm = {
     view: "form",
+    id: IDS.DASHBOARD_FORM,
     width: 300,
     elements: [
         { template: "Edit Films", type: "section" },
@@ -53,7 +65,7 @@ const DashboardForm = {
             cols: [
                 {
                     view: "button",
-                    label: "Add new",
+                    label: "Save",
                     css: "webix_primary",
                     click: handleSubmit,
                 },

@@ -51,12 +51,8 @@
     }
 }
 
-.highlighted {
-    background-color: blanchedalmond;
-}
-
-.users_list .webix_list_item:nth-child(-n + 5) {
-    background-color: blanchedalmond;
+.user_highlighted {
+    background: #FEFFD4;
 }
 
 .webix_column.dashboard_table_id_column > div.webix_cell {

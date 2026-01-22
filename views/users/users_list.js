@@ -2,22 +2,30 @@ import IDS from "../_ids.js";
 
 /** @type {webix.ui.list} */
 const UsersList = {
-    view: "list",
-    template: `#name# <span class="webix_icon mdi mdi-close list_remove_icon"></span>`,
+    view: "editlist",
+    template: `#name#, #age#, from #country# <span class="webix_icon mdi mdi-close list_remove_icon"></span>`,
     id: IDS.USERS_LIST,
     css: "users_list",
+    editable: true,
+    editor: "text",
+    editValue: "name",
+    scheme: {
+        name: "John Doe",
+        age: 20,
+        country: "USA",
+        $init: (it) => it.$css = it.age < 26 ? "user_highlighted" : null,
+    },
+    rules: {
+        name: webix.rules.isNotEmpty,
+    },
     onClick: {
         /** @this {webix.ui.list} */
         list_remove_icon(_ev, id) {
-            // Remove from the list
             this.remove(id);
-            // Remove from the chart
-            /** @type {webix.ui.chart} */
-            const chart = $$(IDS.USERS_CHART);
-            if (chart && chart.exists(id)) chart.remove(id);
             return false;
         }
     },
+    url: "/data/users.json",
 };
 
 export default UsersList;

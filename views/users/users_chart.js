@@ -4,9 +4,14 @@ import IDS from "../_ids.js";
 const UsersChart = {
     view: "chart",
     type: "bar",
-    value: "#age#",
+    value: "#count#",
+    yAxis: {
+        start: 0,
+        step: 2,
+        end: 10,
+    },
     xAxis: {
-        template: "#age#",
+        template: "#country#",
     },
     id: IDS.USERS_CHART,
 };
