@@ -11,11 +11,6 @@ const UsersList = {
     editable: true,
     editor: "text",
     editValue: "name",
-    scheme: {
-        name: "John Doe",
-        age: 20,
-        country: "USA",
-    },
     rules: {
         name: webix.rules.isNotEmpty,
     },
