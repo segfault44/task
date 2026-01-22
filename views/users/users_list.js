@@ -1,5 +1,5 @@
 import IDS from "../_ids.js";
-import usersCollection from "./users_collection.js";
+import usersCollection from "../../collections/users_collection.js";
 import { currentSortOrder } from "./users_toolbar.js";
 
 /** @type {webix.ui.list} */

@@ -4,7 +4,7 @@ import Footer from "./views/footer.js"
 import UserMenuPopup from "./views/user_menu_popup.js";
 import IDS from "./views/_ids.js";
 import { YEAR_FILTERS } from "./views/dashboard/dashboard_tabbar.js";
-import usersCollection from "./views/users/users_collection.js";
+import usersCollection from "./collections/users_collection.js";
 
 // Initialize custom views
 webix.protoUI({ name: "editlist" }, webix.EditAbility, webix.ui.list);

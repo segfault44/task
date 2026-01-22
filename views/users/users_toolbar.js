@@ -1,5 +1,5 @@
 import IDS from "../_ids.js";
-import usersCollection from "./users_collection.js";
+import usersCollection from "../../collections/users_collection.js";
 
 // Random user generator data sets
 const FIRST_NAMES = [ "James", "Michael", "John", "Mary", "Patricia", "Jennifer" ];
