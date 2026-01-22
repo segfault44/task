@@ -1,3 +1,4 @@
+import categoriesCollection from "../../collections/categories_collection.js";
 import IDS from "../_ids.js"
 
 /** @type {webix.ui.datatable} */
@@ -9,7 +10,7 @@ const DashboardTable = {
     columns: [
         { id: "rank", header: "", sort: "int", css: "dashboard_table_id_column", width: 50 },
         { id: "title", header: ["Film Title", { content: "textFilter" }], sort: "text", fillspace: true },
-        { id: "category_id", header: ["Category", { content: "selectFilter" }], sort: "text", collection: "/data/categories.json" },
+        { id: "category_id", header: ["Category", { content: "selectFilter" }], sort: "text", collection: categoriesCollection },
         { id: "votes", header: ["Votes", { content: "textFilter" }], sort: "text", width: 100 },
         { id: "year", header: ["Year"], sort: "text", width: 80 },
         { template: `<span class="remove_btn webix_icon wxi-trash"></span>`, width: 40 },
