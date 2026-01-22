@@ -1,3 +1,4 @@
+import categoriesCollection from "../../collections/categories_collection.js";
 import IDS from "../_ids.js"
 
 /**
@@ -61,6 +62,7 @@ const DashboardForm = {
         { view: "text", label: "Year", name: "year", invalidMessage: "Year value must be from 1970 to the current year" },
         { view: "text", label: "Rating", name: "rating", invalidMessage: "Rating must be a non-zero number" },
         { view: "text", label: "Votes", name: "votes", invalidMessage: "Votes must be a number from 0 to 100000" },
+        { view: "richselect", label: "Category", name: "category_id", options: categoriesCollection },
         {
             cols: [
                 {
