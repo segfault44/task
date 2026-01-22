@@ -29,7 +29,7 @@ const AdminTable = {
     id: IDS.ADMIN_TABLE,
     select: true,
     columns: [
-        { id: "value", header: "Category" },
+        { id: "value", header: "Category", width: 250 },
         { template: `<span class="remove_btn webix_icon wxi-trash"></span>`, width: 40 },
     ],
     onClick: {
