@@ -1,4 +1,5 @@
 import IDS from "../_ids.js";
+import usersCollection from "../../collections/users_collection.js";
 
 // Random user generator data sets
 const FIRST_NAMES = [ "James", "Michael", "John", "Mary", "Patricia", "Jennifer" ];
@@ -20,8 +21,8 @@ function handleInput() {
     /** @type {webix.ui.list} */
     const list = $$(IDS.USERS_LIST);
     if (!list) return;
-    const value = this.getValue();
-    list.filter("#name", value);
+    currentFilter = this.getValue();
+    list.filter("#name", currentFilter);
 }
 
 /**
@@ -46,9 +47,13 @@ function handleClickNew() {
     };
 
     // Add the user to the list and re-sort the list
-    list.add(user);
+    usersCollection.add(user);
     if (currentSortOrder !== "none") {
         list.sort("#age#", currentSortOrder);
+    }
+
+    if (currentFilter.length > 0) {
+        list.filter("#name", currentFilter);
     }
 }
 
@@ -58,7 +63,15 @@ function handleClickNew() {
  * Used in `handleClickNew` to re-sort users
  * @type {"none" | "asc" | "desc"}
  */
-let currentSortOrder = "none";
+export let currentSortOrder = "none";
+
+/**
+ * Current filter input
+ * Updated in `handleInput`
+ * Used in `handleClickNew` to re-filter user
+ * @type {string}
+ */
+let currentFilter = "";
 
 /**
  * Sort the list and the chart

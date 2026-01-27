@@ -4,6 +4,8 @@ import Footer from "./views/footer.js"
 import UserMenuPopup from "./views/user_menu_popup.js";
 import IDS from "./views/_ids.js";
 import { YEAR_FILTERS } from "./views/dashboard/dashboard_tabbar.js";
+import usersCollection from "./collections/users_collection.js";
+import categoriesCollection from "./collections/categories_collection.js";
 
 // Initialize custom views
 webix.protoUI({ name: "editlist" }, webix.EditAbility, webix.ui.list);
@@ -38,8 +40,11 @@ $$(IDS.DASHBOARD_TABLE).registerFilter(
 
 $$(IDS.DASHBOARD_TABBAR).attachEvent("onChange", (_id) => $$(IDS.DASHBOARD_TABLE).filterByAll());
 
-// Sync the user list with the user chart
-$$(IDS.USERS_CHART).sync($$(IDS.USERS_LIST), function () {
+// Sync the user data with user collection
+$$(IDS.USERS_LIST).sync(usersCollection);
+
+// Sync the user chart with the user collection
+$$(IDS.USERS_CHART).sync(usersCollection, function () {
     // Group the chart by country
     this.group({
         by: "country",
@@ -53,3 +58,11 @@ $$(IDS.USERS_CHART).sync($$(IDS.USERS_LIST), function () {
         a.count == b.count ? a.country < b.country : a.count < b.count
     ));
 });
+
+
+// Bind the admin form to the datatable
+$$(IDS.ADMIN_FORM).bind(categoriesCollection);
+
+// Sync the categories collection with the admin table
+$$(IDS.ADMIN_TABLE).sync(categoriesCollection);
+

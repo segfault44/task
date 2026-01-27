@@ -1,4 +1,6 @@
 import IDS from "../_ids.js";
+import usersCollection from "../../collections/users_collection.js";
+import { currentSortOrder } from "./users_toolbar.js";
 
 /** @type {webix.ui.list} */
 const UsersList = {
@@ -9,23 +11,19 @@ const UsersList = {
     editable: true,
     editor: "text",
     editValue: "name",
-    scheme: {
-        name: "John Doe",
-        age: 20,
-        country: "USA",
-        $init: (it) => it.$css = it.age < 26 ? "user_highlighted" : null,
-    },
     rules: {
         name: webix.rules.isNotEmpty,
     },
     onClick: {
         /** @this {webix.ui.list} */
         list_remove_icon(_ev, id) {
-            this.remove(id);
+            usersCollection.remove(id);
+            if (currentSortOrder !== "none") {
+                this.sort("#age#", currentSortOrder);
+            }
             return false;
         }
     },
-    url: "/data/users.json",
 };
 
 export default UsersList;
